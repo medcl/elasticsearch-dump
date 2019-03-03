@@ -71,6 +71,10 @@ func (c *Migrator) NewBulkWorker(docCount *int, pb *pb.ProgressBar, wg *sync.Wai
 				Id:     docI["_id"].(string),
 			}
 
+			// add doc "_routing"
+			if _, ok := docI["_routing"]; ok {
+				doc.Routing = docI["_routing"].(string)
+			}
 		// if channel is closed flush and gtfo
 			if !open {
 				goto WORKER_DONE

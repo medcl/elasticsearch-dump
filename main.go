@@ -29,6 +29,8 @@ func main() {
 	_, err := goflags.Parse(c)
 	if err != nil {
 		log.Error(err)
+		// if error, print it
+		fmt.Print(err)
 		return
 	}
 
